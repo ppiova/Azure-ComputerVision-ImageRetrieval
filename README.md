@@ -28,6 +28,11 @@ The program performs the following operations:
 
 The main program (Main) uses these functions to compute and display the similarity between an image and several text prompts.
 
+## 
+![Example image](https://github.com/ppiova/Azure-ComputerVision-ImageRetrieval/blob/master/readmeImages/imageExample.png "image")
+![Example image](https://github.com/ppiova/Azure-ComputerVision-ImageRetrieval/blob/master/readmeImages/TablePrompt-Similarity.png "Table")
+
+
 ## 👥 Contributions
 Contributions are welcome. Feel free to open an Issue or make a Pull Request.
 
