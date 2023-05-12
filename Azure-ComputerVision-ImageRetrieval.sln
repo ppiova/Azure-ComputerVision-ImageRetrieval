@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33626.354
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure-ComputerVision-ImageRetrieval", "Azure-ComputerVision-ImageRetrieval\Azure-ComputerVision-ImageRetrieval.csproj", "{A9EAB438-8985-4822-AC5E-304DDDE4EBAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9EAB438-8985-4822-AC5E-304DDDE4EBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9EAB438-8985-4822-AC5E-304DDDE4EBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9EAB438-8985-4822-AC5E-304DDDE4EBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9EAB438-8985-4822-AC5E-304DDDE4EBAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAF837D4-A805-4707-8106-19E72DE696FF}
+	EndGlobalSection
+EndGlobal
