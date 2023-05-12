@@ -18,7 +18,7 @@ private static string subscriptionKey = Environment.GetEnvironmentVariable("COMP
 
 Then, simply run the program and you'll see a table of similarities between the specified image and a set of text prompts in the console.
 
-##🛠️ Functions
+## 🛠️ Functions
 The program performs the following operations:
 
 - **ImageEmbedding(string imageUrl):** Takes an image URL and returns the vector of the image using Azure Computer Vision API.
@@ -28,10 +28,10 @@ The program performs the following operations:
 
 The main program (Main) uses these functions to compute and display the similarity between an image and several text prompts.
 
-##👥 Contributions
+## 👥 Contributions
 Contributions are welcome. Feel free to open an Issue or make a Pull Request.
 
-##📄 License
+## 📄 License
 This project is licensed under the terms of the MIT license.
 
 Please ensure to replace the environment variables `"COMPUTER_VISION_ENDPOINT"` and `"COMPUTER_VISION_SUBSCRIPTION_KEY"` with your actual Azure data.
