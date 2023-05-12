@@ -25,6 +25,7 @@ The program performs the following operations:
 - **TextEmbedding(string text):** Takes a text and returns the vector of the text using Azure Computer Vision API.
 - **CosineSimilarity(double[] vector1, double[] vector2):** Computes and returns the cosine similarity between two vectors.
 - **SimilarityResults(double[] imageVector, string[] prompts):** Computes the similarity between the image and several texts, and returns the results sorted by similarity.
+
 The main program (Main) uses these functions to compute and display the similarity between an image and several text prompts.
 
 👥 Contributions
