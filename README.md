@@ -12,7 +12,7 @@ This project leverages Azure Computer Vision API to vectorize images and text, t
 
 First, you need to set up your Azure `endpoint` and `subscriptionKey` as environment variables:
 
-```csharp
+
 private static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 private static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
