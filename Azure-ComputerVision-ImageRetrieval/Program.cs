@@ -2,26 +2,26 @@
 using Newtonsoft.Json;
 using System.Text;
 
-public class AzureComputerVision
+public class AzureCV
 {
     private static readonly HttpClient client = new HttpClient();
 
-    private static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
+    private static readonly string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
     private static string version = "?api-version=2023-02-01-preview&modelVersion=latest";
     private static string vecImgUrl = endpoint + "/retrieval:vectorizeImage" + version;
     private static string vecTxtUrl = endpoint + "/retrieval:vectorizeText" + version;
 
-    private static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    private static readonly string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
     private static async Task<double[]> ImageEmbedding(string imageUrl)
     {
-        var image = new { img_url = imageUrl };
+        var image = new { url = imageUrl };
         var content = new StringContent(JsonConvert.SerializeObject(image), Encoding.UTF8, "application/json");
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
         var response = await client.PostAsync(vecImgUrl, content);
         var responseJson = await response.Content.ReadAsStringAsync();
-        var responseObj = JsonConvert.DeserializeObject<dynamic>(responseJson);
+        dynamic responseObj = JsonConvert.DeserializeObject<dynamic>(responseJson);
         var vector = responseObj.vector.ToObject<double[]>();
 
         return vector;
