@@ -32,11 +32,13 @@ The main program (Main) uses these functions to compute and display the similari
 ![Example image](https://github.com/ppiova/Azure-ComputerVision-ImageRetrieval/blob/master/readmeImages/imageExample.png "image")
 ![Example image](https://github.com/ppiova/Azure-ComputerVision-ImageRetrieval/blob/master/readmeImages/TablePrompt-Similarity.png "Table")
 
-## Additional Documentation 📚
+## Additional Documentation to learn more 📚
 
 To learn more about Azure Computer Vision used in this project, please refer to the official Microsoft Learn documentation:
 
-- [Microsoft Learn Documentation]([https://docs.microsoft.com](https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-image-retrieval?WT.mc_id=AI-MVP-5004753)
+- [Microsoft Learn Documentation](https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/concept-image-retrieval?WT.mc_id=AI-MVP-5004753)
+- [Create computer vision solutions with Azure Cognitive Services](https://bit.ly/computervisionsolutionswithAzure
+)
 
 ## 👥 Contributions
 Contributions are welcome. Feel free to open an Issue or make a Pull Request.
