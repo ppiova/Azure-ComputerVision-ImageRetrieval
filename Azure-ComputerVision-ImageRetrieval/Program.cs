@@ -13,7 +13,7 @@ public class AzureCV
 
     private static readonly string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
-    private static async Task<double[]> ImageEmbedding(string imageUrl)
+    private static async Task<float[]> ImageEmbedding(string imageUrl)
     {
         var image = new { url = imageUrl };
         var content = new StringContent(JsonConvert.SerializeObject(image), Encoding.UTF8, "application/json");
@@ -22,12 +22,12 @@ public class AzureCV
         var response = await client.PostAsync(vecImgUrl, content);
         var responseJson = await response.Content.ReadAsStringAsync();
         dynamic responseObj = JsonConvert.DeserializeObject<dynamic>(responseJson);
-        var vector = responseObj.vector.ToObject<double[]>();
+        var vector = responseObj.vector.ToObject<float[]>();
 
         return vector;
     }
 
-    private static async Task<double[]> TextEmbedding(string text)
+    private static async Task<float[]> TextEmbedding(string text)
     {
         var prompt = new { text = text };
         var content = new StringContent(JsonConvert.SerializeObject(prompt), Encoding.UTF8, "application/json");
@@ -36,29 +36,38 @@ public class AzureCV
         var response = await client.PostAsync(vecTxtUrl, content);
         var responseJson = await response.Content.ReadAsStringAsync();
         var responseObj = JsonConvert.DeserializeObject<dynamic>(responseJson);
-        var vector = responseObj.vector.ToObject<double[]>();
+        var vector = responseObj.vector.ToObject<float[]>();
 
         return vector;
     }
     
-    private static double CosineSimilarity(double[] vector1, double[] vector2)
+    private static float CosineSimilarity(float[] vector1, float[] vector2)
     {
-        var dotProduct = vector1.Zip(vector2, (a, b) => a * b).Sum();
+        float dotProduct = 0;
+        int length = Math.Min(vector1.Length, vector2.Length);
+        for (int i = 0; i< length; i++)
+        {
+            dotProduct += vector1[i] * vector2[i];
+        }
+        float magnitude1 = (float)Math.Sqrt(vector1.Select(x=> x*x).Sum());
+        float magnitude2 = (float)Math.Sqrt(vector2.Select(x => x * x).Sum());
 
-        var magnitude1 = Math.Sqrt(vector1.Sum(x => x * x));
-        var magnitude2 = Math.Sqrt(vector2.Sum(x => x * x));
+        //var dotProduct = vector1.Zip(vector2, (a, b) => a * b).Sum();
+
+        //var magnitude1 = Math.Sqrt(vector1.Sum(x => x * x));
+        //var magnitude2 = Math.Sqrt(vector2.Sum(x => x * x));
 
         return dotProduct / (magnitude1 * magnitude2);
     }
 
-    private static async Task<List<Tuple<string, double>>> SimilarityResults(double[] imageVector, string[] prompts)
+    private static async Task<List<Tuple<string, float>>> SimilarityResults(float[] imageVector, string[] prompts)
     {
-        var results = new List<Tuple<string, double>>();
+        var results = new List<Tuple<string, float>>();
         foreach (var prompt in prompts)
         {
             var textVector = await TextEmbedding(prompt);
             var similarity = CosineSimilarity(imageVector, textVector);
-            results.Add(new Tuple<string, double>(prompt, similarity));
+            results.Add(new Tuple<string, float>(prompt, similarity));
         }
 
         var sortedResults = results.OrderByDescending(x => x.Item2).ToList();
@@ -69,7 +78,7 @@ public class AzureCV
     public static async Task Main(string[] args)
     {
         string imageUrl = "https://raw.githubusercontent.com/ppiova/Azure-ComputerVision-BackgroundRemoval/main/Images/01F56FEF-8415-4851-AB94-14321F8FBE28.jpg";
-        double[] imageVector = await ImageEmbedding(imageUrl);
+        float[] imageVector = await ImageEmbedding(imageUrl);
 
         string[] prompts = new string[]
         {
