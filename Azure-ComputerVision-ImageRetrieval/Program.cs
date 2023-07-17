@@ -52,11 +52,6 @@ public class AzureCV
         float magnitude1 = (float)Math.Sqrt(vector1.Select(x=> x*x).Sum());
         float magnitude2 = (float)Math.Sqrt(vector2.Select(x => x * x).Sum());
        
-        //var dotProduct = vector1.Zip(vector2, (a, b) => a * b).Sum();
-
-        //var magnitude1 = Math.Sqrt(vector1.Sum(x => x * x));
-        //var magnitude2 = Math.Sqrt(vector2.Sum(x => x * x));
-
         return dotProduct / (magnitude1 * magnitude2);
     }
 
